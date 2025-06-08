@@ -1,0 +1,16 @@
+/* Import Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+/* Global styles */
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+/* Root variables for colors and transitions */
+:root {
+  --primary-color: #7749F8; 
+  --primary-color-hover: #6032dd; 
+  --text-color: #707070; 
+  --text-color-2: #fff; 
+  --tran: all 1s ease; 
+}
