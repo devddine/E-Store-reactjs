@@ -19,7 +19,9 @@ const SelectOptions = ({ value, onChange }) => {
 
   return (
     <Form.Select value={value} onChange={onChange}>
-      <option selected>Choisir un Produit</option>
+      <option value="" disabled>
+        Choisir un Produit
+      </option>
       {products.map((p) => (
         <option key={p._id} value={p._id}>
           {p.title}

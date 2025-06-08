@@ -9,17 +9,22 @@ const useOperationModalState = (show, mode, item, onAdd, onEdit, onDelete, onHid
   const [operation, setOperation] = useState({ name: "", date: "", articles: [] });
 
   useEffect(() => {
-    isAdd && show && setOperation({ name: "", date: new Date().toISOString().split("T")[0], articles: [] });
-    (isEdit || isView || isDelete) &&
+    if (isAdd && show) {
+      setOperation({ name: "", date: new Date().toISOString().split("T")[0], articles: [] });
+    }
+    if ((isEdit || isView || isDelete) && item) {
       setOperation({
-        name: item.name,
-        date: item.date.split("T")[0],
-        articles: item.articles.map((article) => ({
-          title: article.product.title,
-          product: article.product.id,
-          quantity: article.quantity,
-        })),
+        name: item.name || "",
+        date: item.date ? item.date.split("T")[0] : "",
+        articles: Array.isArray(item.articles)
+          ? item.articles.map((article) => ({
+              title: article.product?.title || "",
+              product: article.product?.id || "",
+              quantity: article.quantity || 0,
+            }))
+          : [],
       });
+    }
   }, [item, isEdit, isView, isDelete, isAdd, show]);
 
   const handleSubmit = (e) => {
