@@ -1,6 +1,5 @@
 import Toolbar from "../shared/components/Toolbar/Toolbar";
 import ProductTable from "../features/products/components/ProductTable";
-import MainModal from "../shared/components/common/MainModal";
 import Loading from "../shared/components/common/Loading";
 
 import useProducts from "../features/products/hooks/useProducts";
@@ -8,6 +7,7 @@ import useAddProduct from "../features/products/hooks/useAddProduct";
 import useEditProduct from "../features/products/hooks/useEditProduct";
 import useDeleteProduct from "../features/products/hooks/useDeleteProduct";
 import useProductModal from "../features/products/hooks/useProductModal";
+import EntityModal from "../shared/components/common/EntityModal";
 
 const Products = () => {
   const { products, loading, refreshProducts } = useProducts();
@@ -32,7 +32,8 @@ const Products = () => {
         onDelete={(product) => openModal("delete", product)}
       />
 
-      <MainModal
+      <EntityModal
+        type="product"
         show={!!modalMode}
         onHide={closeModal}
         mode={modalMode}

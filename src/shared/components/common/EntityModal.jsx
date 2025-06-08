@@ -2,6 +2,7 @@ import { Modal, Button, Form, Row, Col } from "react-bootstrap";
 import ListTable from "./ListTable";
 import SelectOptions from "./SelectOptions";
 import useModalState from "../../hooks/useModalState";
+import { FaCirclePlus } from "react-icons/fa6";
 
 const TITLES = {
   product: {
@@ -46,7 +47,7 @@ const EntityModal = ({
   } = useModalState(type, show, onHide, mode, item, onAdd, onEdit, onDelete);
 
   return (
-    <Modal show={show} onHide={onHide} backdrop="static" centered size={isProduct ? undefined : "lg"}>
+    <Modal show={show} onHide={onHide} backdrop="static" centered size={isProduct ? "md" : "lg"}>
       <Modal.Header className="border-0 pb-0">
         <Modal.Title>
           <h6 className="mb-0">{TITLES[type][mode]}</h6>
@@ -113,9 +114,7 @@ const EntityModal = ({
                   </Form.Group>
                   <Form.Group as={Col} sm={1} className="px-0">
                     <div className="d-flex justify-content-center align-content-center">
-                      <Button variant="link" onClick={handleListAdd}>
-                        +
-                      </Button>
+                      <FaCirclePlus style={{ height: "38px" }} onClick={handleListAdd} />
                     </div>
                   </Form.Group>
                 </Row>

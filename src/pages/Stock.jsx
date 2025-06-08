@@ -4,7 +4,7 @@ import useDeleteStock from "../features/stock/hooks/useDeleteStock";
 import useEditStock from "../features/stock/hooks/useEditStock";
 import useStock from "../features/stock/hooks/useStock";
 import useStockModal from "../features/stock/hooks/useStockModal";
-import AdvModal from "../shared/components/common/AdvModal";
+import EntityModal from "../shared/components/common/EntityModal";
 import Loading from "../shared/components/common/Loading";
 import Toolbar from "../shared/components/Toolbar/Toolbar";
 
@@ -31,12 +31,12 @@ const Stock = () => {
         onDelete={(stock) => openModal("delete", stock)}
       />
 
-      <AdvModal
-        type="stock"
+      <EntityModal
+        type="operation"
         show={!!modalMode}
         onHide={closeModal}
         mode={modalMode}
-        currentItem={currentStock}
+        item={currentStock}
         onAdd={handleAddStock}
         onEdit={handleEditStock}
         onDelete={handleDeleteStock}
