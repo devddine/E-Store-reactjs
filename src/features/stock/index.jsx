@@ -1,14 +1,14 @@
-import StockTable from "../features/stock/components/StockTable";
-import useAddStock from "../features/stock/hooks/useAddStock";
-import useDeleteStock from "../features/stock/hooks/useDeleteStock";
-import useEditStock from "../features/stock/hooks/useEditStock";
-import useStock from "../features/stock/hooks/useStock";
-import useStockModal from "../features/stock/hooks/useStockModal";
-import EntityModal from "../shared/components/common/EntityModal";
-import Loading from "../shared/components/common/Loading";
-import Toolbar from "../shared/components/Toolbar/Toolbar";
+import StockTable from "./components/StockTable";
+import useAddStock from "./hooks/useAddStock";
+import useDeleteStock from "./hooks/useDeleteStock";
+import useEditStock from "./hooks/useEditStock";
+import useStock from "./hooks/useStock";
+import useStockModal from "./hooks/useStockModal";
+import EntityModal from "../../shared/components/common/EntityModal";
+import Loading from "../../shared/components/common/Loading";
+import Toolbar from "../../shared/components/Toolbar/Toolbar";
 
-const Stock = () => {
+const StockPage = () => {
   const { stock, loading, refreshStock } = useStock();
   const { handleAddStock, adding } = useAddStock(refreshStock);
   const { handleEditStock, updating } = useEditStock(refreshStock);
@@ -44,4 +44,4 @@ const Stock = () => {
     </>
   );
 };
-export default Stock;
+export default StockPage;

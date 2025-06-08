@@ -4,8 +4,8 @@ import { TbEdit } from "react-icons/tb";
 import { RiDeleteBin2Line } from "react-icons/ri";
 
 const TableDefault = ({ config, onView, onEdit, onDelete }) => {
-  const { page, col1, col2, col3, data } = config;
-  const isProducts = page === "products";
+  const { type, col1, col2, col3, data } = config;
+  const isProducts = type === "product";
 
   return (
     <Table hover responsive className="table table-hover table-responsive text-center mt-3">

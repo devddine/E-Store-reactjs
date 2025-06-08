@@ -10,9 +10,9 @@ const useModalState = (type, show, onHide, mode, item, onAdd, onEdit, onDelete) 
   const articleList = useArticleList(operationModal.operation, operationModal.setOperation);
 
   if (isProduct) {
-    return { isProduct: true, ...productModal };
+    return { isProduct: isProduct, ...productModal };
   } else {
-    return { isProduct: false, ...operationModal, ...articleList };
+    return { isProduct: isProduct, ...operationModal, ...articleList };
   }
 };
 

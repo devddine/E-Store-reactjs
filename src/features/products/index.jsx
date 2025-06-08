@@ -1,15 +1,15 @@
-import Toolbar from "../shared/components/Toolbar/Toolbar";
-import ProductTable from "../features/products/components/ProductTable";
-import Loading from "../shared/components/common/Loading";
+import Toolbar from "../../shared/components/Toolbar/Toolbar";
+import ProductTable from "./components/ProductTable";
+import Loading from "../../shared/components/common/Loading";
 
-import useProducts from "../features/products/hooks/useProducts";
-import useAddProduct from "../features/products/hooks/useAddProduct";
-import useEditProduct from "../features/products/hooks/useEditProduct";
-import useDeleteProduct from "../features/products/hooks/useDeleteProduct";
-import useProductModal from "../features/products/hooks/useProductModal";
-import EntityModal from "../shared/components/common/EntityModal";
+import useProducts from "./hooks/useProducts";
+import useAddProduct from "./hooks/useAddProduct";
+import useEditProduct from "./hooks/useEditProduct";
+import useDeleteProduct from "./hooks/useDeleteProduct";
+import useProductModal from "./hooks/useProductModal";
+import EntityModal from "../../shared/components/common/EntityModal";
 
-const Products = () => {
+const ProductsPage = () => {
   const { products, loading, refreshProducts } = useProducts();
   const { handleAddProduct, adding } = useAddProduct(refreshProducts);
   const { handleEditProduct, updating } = useEditProduct(refreshProducts);
@@ -46,4 +46,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default ProductsPage;
