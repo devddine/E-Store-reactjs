@@ -2,122 +2,92 @@
  * @fileoverview Utility functions for validating form inputs and managing validation messages.
  */
 
-import { getData } from "../api/api.js";
-
-// * Stores the current validation message
-let validationMessage = "";
+import { fetchProducts } from "../../features/products/services/productService";
 
 /**
- * Sets the validation message.
- * @param {string} message - The validation message to set.
+ * Validates a text input value.
+ * @param {string} value - The input value to validate.
+ * @returns {{ valid: boolean, message: string }} - Validation result and message.
  */
-export function setMessage(message) {
-  validationMessage = message;
+export function validateTextInput(value) {
+  if (!notEmpty(value)) {
+    return { valid: false, message: "Valeur requise!" };
+  }
+  if (!preventOnlyNumbers(value)) {
+    return { valid: false, message: "Entrée non numérique uniquement!" };
+  }
+  if (!matchesPattern(value, "^[A-Za-z0-9 ]+$")) {
+    return { valid: false, message: "Format invalide!" };
+  }
+  if (!minLength(value, 3)) {
+    return { valid: false, message: "Valeur ≥ 3 caractères!" };
+  }
+  if (!maxLength(value, 28)) {
+    return { valid: false, message: "Valeur ≤ 28 caractères!" };
+  }
+  return { valid: true, message: "" };
 }
 
 /**
- * Validates a text input field.
- * @param {HTMLElement} element - The input element to validate.
- * @param {HTMLElement} errorBox - The element to display the error message.
- * @returns {boolean} - True if the input is valid, otherwise false.
+ * Validates a date input value.
+ * @param {string} value - The input value to validate.
+ * @returns {{ valid: boolean, message: string }} - Validation result and message.
  */
-export function textInputValidation(element, errorBox) {
-  if (
-    !(
-      notEmpty(element.value) &&
-      preventOnlyNumbers(element.value) &&
-      matchesPattern(element.value, "^[A-Za-z0-9 ]+$") &&
-      minLength(element.value, 3) &&
-      maxLength(element.value, 28)
-    )
-  ) {
-    errorBox.innerHTML = getValidationMessage();
-    element.classList.add("is-invalid");
-    return false;
+export function validateDateInput(value) {
+  if (!notEmpty(value)) {
+    return { valid: false, message: "Valeur requise!" };
   }
-  element.classList.remove("is-invalid");
-  return true;
+  if (!isValidDate(value)) {
+    return { valid: false, message: "Format de date invalide!" };
+  }
+  return { valid: true, message: "" };
 }
 
 /**
- * Validates a date input field.
- * @param {HTMLElement} element - The input element to validate.
- * @param {HTMLElement} errorBox - The element to display the error message.
- * @returns {boolean} - True if the input is valid, otherwise false.
+ * Validates a select option value.
+ * @param {string} value - The selected option value.
+ * @returns {{ valid: boolean, message: string }} - Validation result and message.
  */
-export function dateInputValidation(element, errorBox) {
-  if (!(isValidDate(element.value) && notEmpty(element.value))) {
-    errorBox.innerHTML = getValidationMessage();
-    element.classList.add("is-invalid");
-    return false;
+export function validateSelectOption(value) {
+  if (!isNotFirstOption(value)) {
+    return { valid: false, message: "Veuillez sélectionner une option valide!" };
   }
-  element.classList.remove("is-invalid");
-  return true;
+  return { valid: true, message: "" };
 }
 
 /**
- * Validates a select input field to ensure a valid option is selected.
- * @param {HTMLElement} element - The select element to validate.
- * @returns {boolean} - True if a valid option is selected, otherwise false.
+ * Validates a number input value.
+ * @param {string|number} value - The input value to validate.
+ * @returns {{ valid: boolean, message: string }} - Validation result and message.
  */
-export function selectOptionValidation(element) {
-  if (!isNotFirstOption(element.value)) {
-    element.classList.add("is-invalid");
-    return false;
+export function validateNumberInput(value) {
+  if (!notEmpty(value)) {
+    return { valid: false, message: "Valeur requise!" };
   }
-  element.classList.remove("is-invalid");
-  return true;
+  if (!gt(value)) {
+    return { valid: false, message: "Valeur doit être > 0!" };
+  }
+  if (!matchesPattern(value, "^[1-9][0-9]*$")) {
+    return { valid: false, message: "Format invalide!" };
+  }
+  return { valid: true, message: "" };
 }
 
-/**
- * Validates a number input field.
- * @param {HTMLElement} element - The input element to validate.
- * @param {HTMLElement} errorBox - The element to display the error message.
- * @returns {boolean} - True if the input is valid, otherwise false.
- */
-export function numberInputValidation(element, errorBox) {
-  if (!(notEmpty(element.value) && matchesPattern(element.value, "^[1-9][0-9]*$") && gt(element.value))) {
-    errorBox.innerHTML = getValidationMessage();
-    element.classList.add("is-invalid");
-    return false;
+export async function stockAvailableValidation(location, productId, value = 0) {
+  if (location === "/sales") {
+    const product = await fetchProducts(productId);
+    if (value > product.data.stock_available) {
+      return { valid: false, message: `Limite de stock : ${product.data.stock_available}` };
+    }
   }
-  element.classList.remove("is-invalid");
-  return true;
+  return { valid: true, message: "" };
 }
 
-/**
- * Validates if the requested quantity is available in stock.
- * @param {HTMLElement} element - The input element to validate.
- * @param {HTMLElement} errorBox - The element to display the error message.
- * @param {string} productId - The ID of the product to check stock for.
- * @param {number} [value=0] - The quantity to validate (optional).
- * @returns {boolean} - True if the stock is sufficient, otherwise false.
- */
-export async function stockAvailableValidation(element, errorBox, productId, value = 0) {
-  const product = await getData("products", productId);
-  let number = value ? value : element.value;
-  if (number > product.stock_available) {
-    errorBox.innerHTML = `Limite de stock : ${product.stock_available}`;
-    element.classList.add("is-invalid");
-    return false;
+export function listValidation(value) {
+  if (!notEmpty(value)) {
+    return { valid: false, message: "*La liste ne peut pas être vide." };
   }
-  element.classList.remove("is-invalid");
-  return true;
-}
-
-/**
- * Validates if a list is not empty.
- * @param {HTMLElement} element - The element to validate.
- * @param {Array} list - The list to check.
- * @returns {boolean} - True if the list is not empty, otherwise false.
- */
-export function listValidation(element, list) {
-  if (!notEmpty(list)) {
-    element.classList.add("is-invalid");
-    return false;
-  }
-  element.classList.remove("is-invalid");
-  return true;
+  return { valid: true, message: "" };
 }
 
 /**
@@ -126,10 +96,7 @@ export function listValidation(element, list) {
  * @returns {boolean} - True if the selected option is valid, otherwise false.
  */
 export function isNotFirstOption(value) {
-  if (value === "0") {
-    return false;
-  }
-  return true;
+  return !!value;
 }
 
 /**
@@ -138,11 +105,7 @@ export function isNotFirstOption(value) {
  * @returns {boolean} - True if the input is not only numbers, otherwise false.
  */
 export function preventOnlyNumbers(value) {
-  if (/^\d+$/.test(String(value))) {
-    setMessage("Entrée non numérique uniquement!");
-    return false;
-  }
-  return true;
+  return !/^\d+$/.test(String(value));
 }
 
 /**
@@ -153,23 +116,13 @@ export function preventOnlyNumbers(value) {
 export function notEmpty(value) {
   let type = typeof value;
   if (type !== "object") {
-    if (!String(value).trim()) {
-      setMessage("Valeur requise!");
-      return false;
-    }
+    return Boolean(String(value).trim());
   } else if (value instanceof Array) {
-    if (value.length === 0) {
-      setMessage("Tableau non vide!");
-      return false;
-    }
+    return value.length > 0;
   } else if (value instanceof Object) {
-    let keys = Object.keys(value);
-    if (keys.length === 0) {
-      setMessage("Objet non vide!");
-      return false;
-    }
+    return Object.keys(value).length > 0;
   }
-  return true;
+  return false;
 }
 
 /**
@@ -179,11 +132,7 @@ export function notEmpty(value) {
  * @returns {boolean} - True if the value is greater than the minimum, otherwise false.
  */
 export function gt(value, min = 0) {
-  if (Number(value) <= min) {
-    setMessage(`Valeur > ${min}!`);
-    return false;
-  }
-  return true;
+  return Number(value) > min;
 }
 
 /**
@@ -194,11 +143,7 @@ export function gt(value, min = 0) {
  */
 export function matchesPattern(value, pattern) {
   const regex = new RegExp(pattern);
-  if (!regex.test(value)) {
-    setMessage("Format invalide!");
-    return false;
-  }
-  return true;
+  return regex.test(value);
 }
 
 /**
@@ -207,11 +152,7 @@ export function matchesPattern(value, pattern) {
  * @returns {boolean} - True if the value is a valid date, otherwise false.
  */
 export function isValidDate(value) {
-  if (isNaN(new Date(value).getTime())) {
-    setMessage("Format de date invalide!");
-    return false;
-  }
-  return true;
+  return !isNaN(new Date(value).getTime());
 }
 
 /**
@@ -221,11 +162,7 @@ export function isValidDate(value) {
  * @returns {boolean} - True if the value meets the length requirement, otherwise false.
  */
 export function minLength(value, minLength) {
-  if (String(value).length < minLength) {
-    setMessage(`Valeur ≥ ${minLength} caractères!`);
-    return false;
-  }
-  return true;
+  return String(value).length >= minLength;
 }
 
 /**
@@ -235,17 +172,5 @@ export function minLength(value, minLength) {
  * @returns {boolean} - True if the value meets the length requirement, otherwise false.
  */
 export function maxLength(value, maxLength) {
-  if (String(value).length > maxLength) {
-    setMessage(`Valeur ≤ ${maxLength} caractères!`);
-    return false;
-  }
-  return true;
-}
-
-/**
- * Retrieves the current validation message.
- * @returns {string} - The validation message.
- */
-export function getValidationMessage() {
-  return validationMessage;
+  return String(value).length <= maxLength;
 }

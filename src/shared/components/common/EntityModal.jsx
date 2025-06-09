@@ -44,6 +44,12 @@ const EntityModal = ({
     setProductList,
     handleListAdd,
     handleListRemove,
+    titleError,
+    nameError,
+    dateError,
+    articlesError,
+    productError,
+    quantityError,
   } = useModalState(type, show, onHide, mode, item, onAdd, onEdit, onDelete);
 
   return (
@@ -54,7 +60,7 @@ const EntityModal = ({
         </Modal.Title>
       </Modal.Header>
       {(isAdd || isEdit) && (
-        <Form onSubmit={handleSubmit}>
+        <Form noValidate onSubmit={handleSubmit}>
           <Modal.Body>
             {isProduct ? (
               <Form.Group>
@@ -63,8 +69,9 @@ const EntityModal = ({
                   placeholder="Saisir le Titre du Produit"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  required
+                  isInvalid={!!titleError}
                 />
+                <Form.Control.Feedback type="invalid">{titleError}</Form.Control.Feedback>
               </Form.Group>
             ) : (
               <>
@@ -76,7 +83,9 @@ const EntityModal = ({
                       placeholder="Saisir le nom"
                       value={operation.name}
                       onChange={(e) => setOperation({ ...operation, name: e.target.value })}
+                      isInvalid={!!nameError}
                     />
+                    <Form.Control.Feedback type="invalid">{nameError}</Form.Control.Feedback>
                   </Form.Group>
                   <Form.Group as={Col} controlId="date">
                     <Form.Label>Date</Form.Label>
@@ -84,11 +93,15 @@ const EntityModal = ({
                       type="date"
                       value={operation.date}
                       onChange={(e) => setOperation({ ...operation, date: e.target.value })}
+                      isInvalid={!!dateError}
                     />
+                    <Form.Control.Feedback type="invalid">{dateError}</Form.Control.Feedback>
                   </Form.Group>
                 </Row>
                 <hr />
-                <h6 className="mt-4 fw-bold">Produits:</h6>
+                <h6 className="mt-4 fw-bold">
+                  Produits: <span className="text-danger font-monospace fst-italic h6">{articlesError}</span>{" "}
+                </h6>
                 <ListTable articles={operation.articles} isView={isView} onRemove={handleListRemove} />
                 <Row>
                   <Form.Group as={Col} sm={6} className="pe-0">
@@ -101,7 +114,9 @@ const EntityModal = ({
                           product: e.target.value,
                         })
                       }
+                      isInvalid={!!productError}
                     />
+                    <Form.Control.Feedback type="invalid">{productError}</Form.Control.Feedback>
                   </Form.Group>
                   <Form.Group as={Col} sm={5} className="pe-0">
                     <Form.Control
@@ -110,7 +125,9 @@ const EntityModal = ({
                       min="0"
                       value={productList.quantity}
                       onChange={(e) => setProductList({ ...productList, quantity: e.target.value })}
+                      isInvalid={!!quantityError}
                     />
+                    <Form.Control.Feedback type="invalid">{quantityError}</Form.Control.Feedback>
                   </Form.Group>
                   <Form.Group as={Col} sm={1} className="px-0">
                     <div className="d-flex justify-content-center align-content-center">

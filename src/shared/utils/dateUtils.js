@@ -42,6 +42,7 @@ export function timeAgo(isoString) {
     { label: "mois", plural: "mois", seconds: 2592000 },
     { label: "semaine", plural: "semaines", seconds: 604800 },
     { label: "jour", plural: "jours", seconds: 86400 },
+    { label: "heure", plural: "heures", seconds: 3600 },
   ];
 
   // * Find the most appropriate time interval

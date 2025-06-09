@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { validateTextInput, validateDateInput, listValidation } from "../../utils/validators";
 
 const useOperationModalState = (show, mode, item, onAdd, onEdit, onDelete, onHide) => {
   const isAdd = mode === "add";
@@ -7,6 +8,9 @@ const useOperationModalState = (show, mode, item, onAdd, onEdit, onDelete, onHid
   const isDelete = mode === "delete";
 
   const [operation, setOperation] = useState({ name: "", date: "", articles: [] });
+  const [nameError, setNameError] = useState("");
+  const [dateError, setDateError] = useState("");
+  const [articlesError, setArticlesError] = useState("");
 
   useEffect(() => {
     if (isAdd && show) {
@@ -25,11 +29,26 @@ const useOperationModalState = (show, mode, item, onAdd, onEdit, onDelete, onHid
           : [],
       });
     }
+    setNameError("");
+    setDateError("");
+    setArticlesError("");
   }, [item, isEdit, isView, isDelete, isAdd, show]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!operation.name.trim() || !operation.date.trim()) return;
+    const { valid: nameValid, message: nameMessage } = validateTextInput(operation.name);
+    const { valid: dateValid, message: dateMessage } = validateDateInput(operation.date);
+    const { valid: listValid, message: listMessage } = listValidation(operation.articles);
+
+    if (!nameValid || !dateValid || !listValid) {
+      setNameError(nameMessage);
+      setDateError(dateMessage);
+      setArticlesError(listMessage);
+      return;
+    }
+    setNameError("");
+    setDateError("");
+    setArticlesError("");
     try {
       isAdd && onAdd(operation);
       isEdit && onEdit(item._id, operation);
@@ -47,6 +66,10 @@ const useOperationModalState = (show, mode, item, onAdd, onEdit, onDelete, onHid
     isDelete,
     operation,
     setOperation,
+    nameError,
+    dateError,
+    articlesError,
+    setArticlesError,
     handleSubmit,
   };
 };
