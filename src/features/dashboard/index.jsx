@@ -17,6 +17,7 @@ import BarChart from "./components/charts/BarChart";
 import useRecentActivities from "./hooks/useRecentActivities";
 import Activity from "./components/Activity";
 import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 /**
  * DashboardPage component renders the dashboard with stats, charts, and recent activities.
@@ -39,6 +40,10 @@ const DashboardPage = () => {
   const stats = useProductsStats(productsData);
 
   const isLoading = loading;
+
+  useEffect(() => {
+    document.title = `${t("header.appName")} - ${t("dashboard.title")}`;
+  });
 
   return (
     <>

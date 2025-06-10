@@ -13,6 +13,7 @@ import useDeleteSale from "./hooks/useDeleteSale";
 import useEditSale from "./hooks/useEditSale";
 import useSale from "./hooks/useSale";
 import useSaleModal from "./hooks/useSaleModal";
+import { useEffect } from "react";
 
 /**
  * SalesPage component renders the sales management UI with search and CRUD modals.
@@ -38,6 +39,10 @@ const SalesPage = () => {
 
   // Search hook for filtering sales
   const { filteredData, searchValue, setSearchValue } = useSearch("operation", sales);
+
+  useEffect(() => {
+    document.title = `${t("header.appName")} - ${t("sales.title")}`;
+  });
 
   return (
     <>

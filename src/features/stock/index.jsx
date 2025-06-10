@@ -13,6 +13,7 @@ import Loading from "../../shared/components/common/Loading";
 import Toolbar from "../../shared/components/Toolbar/Toolbar";
 import useSearch from "../../shared/hooks/useSearch";
 import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 /**
  * StockPage component to display and manage stock items with search, add, edit, delete, and modal functionalities.
@@ -28,6 +29,11 @@ const StockPage = () => {
   const isLoading = loading || adding || updating || deleting;
 
   const { filteredData, searchValue, setSearchValue } = useSearch("operation", stock);
+
+  useEffect(() => {
+    document.title = `${t("header.appName")} - ${t("stock.title")}`;
+  });
+
   return (
     <>
       {isLoading && <Loading />}

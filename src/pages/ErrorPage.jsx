@@ -6,6 +6,7 @@ import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styles from "./../assets/styles/App.module.css";
 import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 /**
  * ErrorPage component to show error message and a button to navigate back to dashboard.
@@ -13,6 +14,11 @@ import { useTranslation } from "react-i18next";
  */
 const ErrorPage = () => {
   const { t } = useTranslation();
+
+  useEffect(() => {
+    document.title = `${t("header.appName")} - ${t("pages.error404.title")}`;
+  });
+
   return (
     <div className="text-dark">
       <div

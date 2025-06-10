@@ -14,6 +14,7 @@ import useDeleteProduct from "./hooks/useDeleteProduct";
 import useProductModal from "./hooks/useProductModal";
 import EntityModal from "../../shared/components/common/EntityModal";
 import useSearch from "../../shared/hooks/useSearch";
+import { useEffect } from "react";
 
 /**
  * ProductsPage component renders the product management UI with search and CRUD modals.
@@ -39,6 +40,10 @@ const ProductsPage = () => {
 
   // Search hook for filtering products
   const { filteredData, searchValue, setSearchValue } = useSearch("product", products);
+
+  useEffect(() => {
+    document.title = `${t("header.appName")} - ${t("products.title")}`;
+  });
 
   return (
     <>
