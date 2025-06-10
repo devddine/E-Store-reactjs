@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[![Wakatime](https://wakatime.com/badge/user/99386bc4-1e8a-4a85-849a-2382efb82b50/project/a33eb78f-7d1c-446c-a4de-ebbe956777d0.svg)](https://wakatime.com/badge/user/99386bc4-1e8a-4a85-849a-2382efb82b50/project/a33eb78f-7d1c-446c-a4de-ebbe956777d0)
+[![Time Spent](https://wakatime.com/badge/user/99386bc4-1e8a-4a85-849a-2382efb82b50/project/a33eb78f-7d1c-446c-a4de-ebbe956777d0.svg)](https://wakatime.com/badge/user/99386bc4-1e8a-4a85-849a-2382efb82b50/project/a33eb78f-7d1c-446c-a4de-ebbe956777d0)
 [![GitHub Issues](https://img.shields.io/github/issues/devddine/E-Store-reactjs.svg)](https://github.com/devddine/E-Store-reactjs/issues)
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/devddine/E-Store-reactjs.svg)](https://github.com/devddine/E-Store-reactjs/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
