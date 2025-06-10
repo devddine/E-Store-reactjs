@@ -94,21 +94,7 @@ Manage products, track sales, monitor stock, and view dashboards—all from one 
 ## 📁 Folder Structure
 
 ```yaml
-.
-├── .gitignore
-├── eslint.config.js
-├── index.html
-├── package-lock.json
-├── package.json
-├── README.md                     # Project documentation
-├── vite.config.js
-├── public                        # Public static assets
-│   └── locales                  # Localization files
-│       ├── en                   # English translations
-│       │   └── translation.json
-│       └── fr                   # French translations
-│           └── translation.json
-└── src                          # Source code
+   src                          # Source code
     ├── App.jsx                  # Main React app component
     ├── main.jsx                 # Entry point for React app
     ├── api                      # API client and endpoints
