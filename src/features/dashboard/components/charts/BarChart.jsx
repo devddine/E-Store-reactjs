@@ -1,9 +1,22 @@
 
+/**
+ * @fileoverview BarChart component renders a bar chart for stock and sales data using ECharts.
+ */
+
 import ReactECharts from "echarts-for-react";
 import { useTranslation } from "react-i18next";
 
+/**
+ * BarChart component to display stock and sales data as a bar chart.
+ * @param {Object} props - Component props.
+ * @param {Array<number>} props.stockData - Array of stock data values.
+ * @param {Array<number>} props.salesData - Array of sales data values.
+ * @returns {JSX.Element} The rendered bar chart component.
+ */
 const BarChart = ({ stockData, salesData }) => {
   const { t } = useTranslation();
+
+  // Chart options configuration for ECharts
   const option = {
     title: {
       text: t("dashboard.charts.bar.title"),

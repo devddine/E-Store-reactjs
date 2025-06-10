@@ -1,3 +1,7 @@
+/**
+ * @fileoverview Dashboard page component displaying key stats, charts, and recent activities.
+ */
+
 import { Col, Container, Row } from "react-bootstrap";
 import Loading from "../../shared/components/common/Loading";
 import CardStats from "./components/CardStats";
@@ -14,12 +18,26 @@ import useRecentActivities from "./hooks/useRecentActivities";
 import Activity from "./components/Activity";
 import { useTranslation } from "react-i18next";
 
+/**
+ * DashboardPage component renders the dashboard with stats, charts, and recent activities.
+ * @component
+ * @returns {JSX.Element} The dashboard page UI.
+ */
 const DashboardPage = () => {
   const { t } = useTranslation();
+
+  // Fetch products, stock, sales data and loading state
   const { productsData, stockData, salesData, loading } = useGetData();
+
+  // Process stock and sales data for charts
   const { stock, sales, stockLength, salesLength } = useStockSalesData(stockData, salesData);
+
+  // Get recent activity actions from stock and sales data
   const { actions } = useRecentActivities(stockData, salesData);
+
+  // Get product statistics for pie chart
   const stats = useProductsStats(productsData);
+
   const isLoading = loading;
 
   return (

@@ -1,7 +1,15 @@
+/**
+ * @fileoverview SideBar component renders the navigation sidebar with links.
+ */
+
 import { useLocation } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 import { useTranslation } from "react-i18next";
 
+/**
+ * SideBar component to display navigation links with active highlighting.
+ * @returns {JSX.Element} The rendered sidebar component.
+ */
 const SideBar = () => {
   const location = useLocation();
   const { t } = useTranslation();

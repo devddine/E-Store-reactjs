@@ -1,5 +1,17 @@
+/**
+ * @fileoverview CardStats component displays a statistic card with a title, value, and icon.
+ */
+
 import { Card } from "react-bootstrap";
 
+/**
+ * CardStats component to show a statistic with title, value, and icon.
+ * @param {Object} props - Component props.
+ * @param {string} props.title - Title of the statistic.
+ * @param {number|string} props.value - Value of the statistic.
+ * @param {JSX.Element} props.icon - Icon to display on the card.
+ * @returns {JSX.Element} The rendered statistic card component.
+ */
 const CardStats = ({ title, value, icon }) => {
   return (
     <Card className="bg-light">

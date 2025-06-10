@@ -1,9 +1,23 @@
+/**
+ * @fileoverview Activity component displays a single stock or sale activity item with icons and timestamps.
+ */
+
 import { BsClipboard2CheckFill } from "react-icons/bs";
 import { FaCartShopping } from "react-icons/fa6";
 import { timeAgo } from "../../../shared/utils/dateUtils";
 import styles from "./../../../assets/styles/App.module.css";
 import { useTranslation } from "react-i18next";
 
+/**
+ * Activity component to display stock or sale activity details.
+ * @param {Object} props - Component props.
+ * @param {Object} props.item - Activity item data.
+ * @param {string} props.item.source - Source type ("stock" or other).
+ * @param {string} props.item.name - Name of the activity.
+ * @param {Array} props.item.articles - List of articles involved in the activity.
+ * @param {string} props.item.createdAt - ISO date string of activity creation.
+ * @returns {JSX.Element} The rendered activity component.
+ */
 const Activity = ({ item }) => {
   const { t } = useTranslation();
   const isStock = item.source === "stock";

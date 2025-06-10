@@ -1,10 +1,14 @@
+/**
+ * @fileoverview Custom hook to filter data based on search term for different table types.
+ */
+
 import { useState, useEffect } from "react";
 
 /**
- * Custom hook to search data based on search term.
+ * useSearch hook returns filtered data based on search input.
  * @param {string} tableType - The type of table to search: "product", "stock", or "sales".
  * @param {Array} data - The data array to search within.
- * @returns {object} - { filteredData, searchValue, setSearchValue }
+ * @returns {Object} Object containing filteredData, searchValue, and setSearchValue.
  */
 const useSearch = (tableType, data) => {
   const [searchValue, setSearchValue] = useState("");

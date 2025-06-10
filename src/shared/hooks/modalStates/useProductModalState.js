@@ -1,6 +1,21 @@
+/**
+ * @fileoverview Custom hook to manage product modal state and validation.
+ */
+
 import { useState, useEffect } from "react";
 import { validateTextInput } from "../../utils/validators";
 
+/**
+ * useProductModalState hook manages state and validation for product modals.
+ * @param {boolean} show - Flag indicating if the modal is shown.
+ * @param {string} mode - Mode of the modal ('add', 'edit', 'view', 'delete').
+ * @param {Object} item - The item being edited or viewed.
+ * @param {Function} onAdd - Callback for add action.
+ * @param {Function} onEdit - Callback for edit action.
+ * @param {Function} onDelete - Callback for delete action.
+ * @param {Function} onHide - Callback to hide the modal.
+ * @returns {Object} Modal state, errors, and handlers.
+ */
 const useProductModalState = (show, mode, item, onAdd, onEdit, onDelete, onHide) => {
   const isAdd = mode === "add";
   const isEdit = mode === "edit";

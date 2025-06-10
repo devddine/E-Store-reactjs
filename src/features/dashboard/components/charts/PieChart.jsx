@@ -1,9 +1,21 @@
 
+/**
+ * @fileoverview PieChart component renders a pie chart for product, sales, and stock stats using ECharts.
+ */
+
 import ReactECharts from "echarts-for-react";
 import { useTranslation } from "react-i18next";
 
+/**
+ * PieChart component to display product, sales, and stock statistics as a pie chart.
+ * @param {Object} props - Component props.
+ * @param {Object} props.stats - Statistics object containing totalProducts, totalSales, and totalStock.
+ * @returns {JSX.Element} The rendered pie chart component.
+ */
 const PieChart = ({ stats }) => {
   const { t } = useTranslation();
+
+  // Chart options configuration for ECharts
   const option = {
     title: {
       text: t("dashboard.charts.pie.title"),

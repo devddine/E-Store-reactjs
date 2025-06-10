@@ -1,8 +1,21 @@
+/**
+ * @fileoverview Toolbar component provides a search bar and add button for products, stock, or sales.
+ */
+
 import { Button, Form } from "react-bootstrap";
 import { HiOutlineSearch } from "react-icons/hi";
 import styles from "../../../assets/styles/App.module.css";
 import { useTranslation } from "react-i18next";
 
+/**
+ * Toolbar component to search and add new items.
+ * @param {Object} props - Component props.
+ * @param {string} props.type - Type of item ('product', 'stock', or 'sale').
+ * @param {string} props.searchValue - Current search input value.
+ * @param {Function} props.onSearch - Callback for search input changes.
+ * @param {Function} props.onAdd - Callback for add button click.
+ * @returns {JSX.Element} The rendered toolbar component.
+ */
 const Toolbar = ({ type, searchValue, onSearch, onAdd }) => {
   const { t } = useTranslation();
   return (

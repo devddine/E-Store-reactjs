@@ -1,8 +1,16 @@
+/**
+ * @fileoverview Header component renders the application header with language selector.
+ */
+
 import { Link } from "react-router-dom";
 import Divider from "../common/Divider";
 import { useTranslation } from "react-i18next";
 import { Form } from "react-bootstrap";
 
+/**
+ * Header component to display app name and language selection dropdown.
+ * @returns {JSX.Element} The rendered header component.
+ */
 const Header = () => {
   const { t, i18n } = useTranslation();
 

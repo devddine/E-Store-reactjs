@@ -1,3 +1,7 @@
+/**
+ * @fileoverview EntityModal component provides a modal dialog for adding, editing, viewing, and deleting products or operations.
+ */
+
 import { Modal, Button, Form, Row, Col } from "react-bootstrap";
 import ListTable from "./ListTable";
 import SelectOptions from "./SelectOptions";
@@ -6,6 +10,19 @@ import { FaCirclePlus } from "react-icons/fa6";
 import styles from "../../../assets/styles/App.module.css";
 import { useTranslation } from "react-i18next";
 
+/**
+ * EntityModal component to manage modal state and render form or confirmation dialogs for entities.
+ * @param {Object} props - Component props.
+ * @param {string} props.type - Type of entity ('product' or 'operation').
+ * @param {boolean} props.show - Whether the modal is visible.
+ * @param {Function} props.onHide - Function to call to hide the modal.
+ * @param {string} props.mode - Modal mode ('add', 'edit', 'delete', 'view').
+ * @param {Object} [props.item={}] - The current item data.
+ * @param {Function} props.onAdd - Function to call to add an item.
+ * @param {Function} props.onEdit - Function to call to edit an item.
+ * @param {Function} props.onDelete - Function to call to delete an item.
+ * @returns {JSX.Element} The rendered entity modal component.
+ */
 const EntityModal = ({
   type, // 'product' or 'operation'
   show,

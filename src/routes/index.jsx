@@ -1,3 +1,7 @@
+/**
+ * @fileoverview AppRoutes component defines the routing structure of the application.
+ */
+
 import { Route, Routes } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 
@@ -7,6 +11,10 @@ import StockPage from "../features/stock";
 import SalesPage from "../features/sales";
 import ErrorPage from "../pages/ErrorPage";
 
+/**
+ * AppRoutes component sets up routes for dashboard, products, stock, sales, and error pages.
+ * @returns {JSX.Element} The rendered routes component.
+ */
 const AppRoutes = () => {
   return (
     <Routes>

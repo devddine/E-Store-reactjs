@@ -1,118 +1,153 @@
-# React + Vite
+# E-Store React JS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Status](https://img.shields.io/website?url=https://your-demo-url.com)](https://your-demo-url.com)  
+[![GitHub Issues](https://img.shields.io/github/issues/yourusername/e-store-reactjs.svg)](https://github.com/yourusername/e-store-reactjs/issues)  
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/yourusername/e-store-reactjs.svg)](https://github.com/yourusername/e-store-reactjs/pulls)  
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🛒 **A modern, feature-rich e-commerce management system built with React.js.**  
+Manage products, track sales, monitor stock, and view dashboards—all from one modular and scalable platform.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📝 Table of Contents
 
-------------------------------------------------------------------
+- [E-Store React JS](#e-store-react-js)
+  - [📝 Table of Contents](#-table-of-contents)
+  - [🌟 Features](#-features)
+  - [📐 Preview](#-preview)
+  - [🎥 Live Demo](#-live-demo)
+  - [💭 How it Works](#-how-it-works)
+  - [🏁 Getting Started](#-getting-started)
+  - [📁 Folder Structure](#-folder-structure)
+  - [⛏️ Built Using](#️-built-using)
+  - [🤝 Contributions](#-contributions)
+  - [📜 License](#-license)
+
+---
+
+## 🌟 Features
+
+- 📊 **Dashboard Analytics**: Get insights into product performance and sales.
+- 🛍 **Product Management**: Add, update, or delete products with ease.
+- 💰 **Sales Tracking**: View and manage recent and historical sales.
+- 📦 **Stock Management**: Monitor stock levels in real-time.
+- 🌍 **Localization Support**: Switch between English and French with i18n.
+- ♻️ **Reusable Components**: Shared UI and logic for consistent experience.
+- 🔌 **Service-Based Architecture**: Clean separation of API logic.
+
+---
+
+## 📐 Preview
+
+![Preview](./assets/preview.jpg)
+
+---
+
+## 🎥 Live Demo
+
+[Launch Demo](https://your-demo-url.com)  
+*Note: For best experience, clone and run locally.*
+
+---
+
+## 💭 How it Works
+
+- **Dashboard**: Visualize stats through charts and cards.
+- **Products**: Navigate to products tab to create, edit or delete items.
+- **Sales**: Access sales records and revenue insights.
+- **Stock**: Keep an eye on inventory levels.
+- **Languages**: Switch UI language using the toggle (EN/FR).
+- **Architecture**: Modular, scalable structure using React hooks and context.
+
+---
+
+## 🏁 Getting Started
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/yourusername/e-store-reactjs.git
+   ```
+
+2. Navigate into the project directory:
+
+   ```bash
+   cd e-store-reactjs
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Visit `http://localhost:1337` in your browser.
+
+---
+
+## 📁 Folder Structure
 
 ```yaml
-"src" Folder Structure:
-
-
-src/
-├── api/
-├── assets/
-├── components/
-├── features/
-├── hooks/
-├── layouts/
-├── pages/
-├── routes/
-├── utils/
-└── App.js
-
-
-Final Folder structure:
-
-project-root/
+.
 ├── public/
-│   ├── index.html           # Main HTML file, root div here for React to mount
-│   └── favicon.ico          # Site icon
-│
+│   └── locales/
+│       ├── en/translation.json
+│       └── fr/translation.json
 ├── src/
-│
-│   ├── api/                 # Shared API logic
-│   │   ├── axiosClient.js       # Axios instance (base URL, interceptors)
-│   │   ├── endpoints.js         # Central list of endpoint paths
-│   │   └── request.js           # Optional wrapper for common request logic (get, post)
-│
-│   ├── assets/              # Global static files
-│   │   ├── styles/
-│   │   │   ├── base.css         # Base global styles
-│   │   │   └── variables.css    # CSS variables (colors, fonts)
-│   │   └── images/
-│   │       └── logo.png         # Logo or other global images
-│
-│   ├── components/          # Global reusable UI components (used across features)
-│   │   ├── Button.js            # Reusable button component
-│   │   ├── Modal.js             # Reusable modal component
-│   │   ├── Table.js             # Generic table component
-│   │   └── Input.js             # Reusable input component
-│
-│   ├── features/            # Feature-based folders (one for each nav section)
-│   │
-│   │   ├── dashboard/           # Dashboard: stats + chart + logs
-│   │   │   ├── components/
-│   │   │   │   ├── StatsCard.js     # Widget showing a single stat
-│   │   │   │   ├── ActivityLog.js   # List of recent activities
-│   │   │   │   └── SalesChart.js    # Chart.js graph for sales
-│   │   │   └── DashboardPage.js     # Main page layout (composes the components)
-│   │
-│   │   ├── products/            # Products CRUD feature
-│   │   │   ├── components/
-│   │   │   │   ├── ProductForm.js   # Form for creating/editing products
-│   │   │   │   └── ProductTable.js  # Displays product list with actions
-│   │   │   ├── services/
-│   │   │   │   └── productService.js  # All API calls for products
-│   │   │   └── ProductsPage.js     # Assembles form and table
-│   │
-│   │   ├── stock/               # Stock operations
-│   │   │   ├── components/
-│   │   │   │   ├── StockForm.js
-│   │   │   │   └── StockTable.js
-│   │   │   ├── services/
-│   │   │   │   └── stockService.js
-│   │   │   └── StockPage.js
-│   │
-│   │   └── sales/               # Sales operations
-│   │       ├── components/
-│   │       │   ├── SalesForm.js
-│   │       │   └── SalesTable.js
-│   │       ├── services/
-│   │       │   └── salesService.js
-│   │       └── SalesPage.js
-│
-│   ├── hooks/               # Custom reusable hooks
-│   │   └── useFetch.js          # Example hook for fetching data
-│
-│   ├── layouts/             # Layout components
-│   │   └── AdminLayout.js       # Shared layout with navbar, sidebar, etc.
-│
-│   ├── pages/               # Top-level route components (optional separation)
-│   │   ├── Dashboard.js         # Wrapper to render DashboardPage
-│   │   ├── Products.js
-│   │   ├── Stock.js
-│   │   └── Sales.js
-│
-│   ├── routes/              # Routing setup
-│   │   └── AppRoutes.js         # Defines all routes and their components
-│
-│   ├── utils/               # General helper functions
-│   │   └── formatDate.js        # Formats dates
-│
-│   ├── App.js               # Root app component with layout & routes
-│   └── index.js             # Entry point, renders App into root div in index.html
-│
-├── .gitignore              # Ignore node_modules, etc.
-├── package.json            # Project dependencies and scripts
-└── README.md               # Project info
-
+│   ├── api/
+│   ├── assets/
+│   │   ├── images/
+│   │   └── styles/
+│   ├── features/
+│   │   ├── dashboard/
+│   │   ├── products/
+│   │   ├── sales/
+│   │   └── stock/
+│   ├── layouts/
+│   ├── pages/
+│   ├── routes/
+│   ├── shared/
+│   ├── App.jsx
+│   ├── i18n.js
+│   └── main.jsx
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package.json
+├── package-lock.json
+└── vite.config.js
 ```
+
+---
+
+## ⛏️ Built Using
+
+- **React.js**
+- **Vite**
+- **React Router**
+- **Axios**
+- **React Context API**
+- **i18next**
+- **Chart.js**
+- **CSS Modules**
+
+---
+
+## 🤝 Contributions
+
+Your contributions are welcome! Feel free to fork the repo and submit pull requests, open issues, or suggest features.
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License. See the [LICENSE](/LICENSE) file for details.

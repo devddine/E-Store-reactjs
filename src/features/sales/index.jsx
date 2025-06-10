@@ -1,3 +1,7 @@
+/**
+ * @fileoverview SalesPage component manages sales listing, searching, and CRUD operations with modals.
+ */
+
 import { useTranslation } from "react-i18next";
 import EntityModal from "../../shared/components/common/EntityModal";
 import Loading from "../../shared/components/common/Loading";
@@ -10,15 +14,29 @@ import useEditSale from "./hooks/useEditSale";
 import useSale from "./hooks/useSale";
 import useSaleModal from "./hooks/useSaleModal";
 
+/**
+ * SalesPage component renders the sales management UI with search and CRUD modals.
+ * @component
+ * @returns {JSX.Element} The sales page UI.
+ */
 const SalesPage = () => {
   const { t } = useTranslation();
+
+  // Fetch sales and loading state
   const { sales, loading, refreshSales } = useSale();
+
+  // Handlers for adding, editing, deleting sales with refresh callbacks
   const { handleAddSale, adding } = useAddSale(refreshSales);
   const { handleEditSale, updating } = useEditSale(refreshSales);
   const { handleDeleteSale, deleting } = useDeleteSale(refreshSales);
+
+  // Modal state and handlers for sale modals
   const { modalMode, currentSale, openModal, closeModal } = useSaleModal();
+
+  // Combined loading state for all operations
   const isLoading = loading || adding || updating || deleting;
 
+  // Search hook for filtering sales
   const { filteredData, searchValue, setSearchValue } = useSearch("operation", sales);
 
   return (

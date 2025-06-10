@@ -1,3 +1,7 @@
+/**
+ * @fileoverview Custom hook to manage article list state and validation in modals.
+ */
+
 import { useState, useEffect } from "react";
 import {
   validateSelectOption,
@@ -7,6 +11,14 @@ import {
 } from "../../utils/validators";
 import { useLocation } from "react-router-dom";
 
+/**
+ * useArticleList hook manages product list state, validation errors, and handlers for adding/removing articles.
+ * @param {boolean} show - Flag indicating if the modal is shown.
+ * @param {Object} operation - Current operation state containing articles.
+ * @param {Function} setOperation - Setter function for operation state.
+ * @param {Function} setArticlesError - Setter function for articles error message.
+ * @returns {Object} Object containing productList, errors, and handlers.
+ */
 const useArticleList = (show, operation, setOperation, setArticlesError) => {
   let location = useLocation();
   const [productList, setProductList] = useState({ title: "", product: "", quantity: "" });

@@ -1,8 +1,16 @@
+/**
+ * @fileoverview ErrorPage component displays a 404 error message with navigation back to dashboard.
+ */
+
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styles from "./../assets/styles/App.module.css";
 import { useTranslation } from "react-i18next";
 
+/**
+ * ErrorPage component to show error message and a button to navigate back to dashboard.
+ * @returns {JSX.Element} The rendered error page component.
+ */
 const ErrorPage = () => {
   const { t } = useTranslation();
   return (

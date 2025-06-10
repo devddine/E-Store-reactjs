@@ -1,3 +1,7 @@
+/**
+ * @fileoverview StockPage component manages stock data and UI including table, modal, and toolbar.
+ */
+
 import StockTable from "./components/StockTable";
 import useAddStock from "./hooks/useAddStock";
 import useDeleteStock from "./hooks/useDeleteStock";
@@ -10,6 +14,10 @@ import Toolbar from "../../shared/components/Toolbar/Toolbar";
 import useSearch from "../../shared/hooks/useSearch";
 import { useTranslation } from "react-i18next";
 
+/**
+ * StockPage component to display and manage stock items with search, add, edit, delete, and modal functionalities.
+ * @returns {JSX.Element} The rendered stock page component.
+ */
 const StockPage = () => {
   const { t } = useTranslation();
   const { stock, loading, refreshStock } = useStock();
