@@ -23,6 +23,7 @@ const Toolbar = ({ type, searchValue, onSearch, onAdd }) => {
       <div className={`${styles.searchBar} d-flex align-items-center`}>
         <Form.Control
           type="search"
+          name="search"
           placeholder={
             type === "product"
               ? t("toolbar.searchPlaceholder.product")

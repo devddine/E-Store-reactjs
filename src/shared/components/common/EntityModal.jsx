@@ -72,6 +72,7 @@ const EntityModal = ({
                 <Form.Control
                   type="text"
                   placeholder={t("common.modal.body.productTitlePlaceholder")}
+                  name="title"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   isInvalid={!!titleError}
@@ -86,6 +87,8 @@ const EntityModal = ({
                     <Form.Control
                       type="text"
                       placeholder={t(`common.modal.body.namePlaceholder.${type}`)}
+                      name="name"
+                      autoComplete="name"
                       value={operation.name}
                       onChange={(e) => setOperation({ ...operation, name: e.target.value })}
                       isInvalid={!!nameError}
@@ -97,6 +100,7 @@ const EntityModal = ({
                     <Form.Control
                       type="date"
                       value={operation.date}
+                      name="date"
                       onChange={(e) => setOperation({ ...operation, date: e.target.value })}
                       isInvalid={!!dateError}
                     />
@@ -127,6 +131,7 @@ const EntityModal = ({
                   <Form.Group as={Col} sm={5} className="pe-0">
                     <Form.Control
                       type="number"
+                      name="quantity"
                       placeholder={t("common.modal.body.quantityPlaceholder")}
                       min="0"
                       value={productList.quantity}

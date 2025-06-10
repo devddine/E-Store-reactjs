@@ -23,7 +23,13 @@ const Header = () => {
         <Link className="text-decoration-none text-dark fw-bolder fs-4" to="/">
           {t("header.appName")}
         </Link>
-        <Form.Select onChange={(e) => changeLanguage(e.target.value)} defaultValue={i18n.language} className="w-auto">
+        <Form.Select
+          id="language-select"
+          name="language"
+          onChange={(e) => changeLanguage(e.target.value)}
+          defaultValue={i18n.language}
+          className="w-auto"
+        >
           <option value="en">🇺🇸 {t("sidebar.english")}</option>
           <option value="fr">🇫🇷 {t("sidebar.french")}</option>
         </Form.Select>

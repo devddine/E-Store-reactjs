@@ -1,30 +1,34 @@
-# E-Store React JS
+<h1 align="center">E-Store React JS</h1>
 
-[![Status](https://img.shields.io/website?url=https://your-demo-url.com)](https://your-demo-url.com)  
-[![GitHub Issues](https://img.shields.io/github/issues/yourusername/e-store-reactjs.svg)](https://github.com/yourusername/e-store-reactjs/issues)  
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/yourusername/e-store-reactjs.svg)](https://github.com/yourusername/e-store-reactjs/pulls)  
+<div align="center">
+
+[![Wakatime](https://wakatime.com/badge/user/99386bc4-1e8a-4a85-849a-2382efb82b50/project/a33eb78f-7d1c-446c-a4de-ebbe956777d0.svg)](https://wakatime.com/badge/user/99386bc4-1e8a-4a85-849a-2382efb82b50/project/a33eb78f-7d1c-446c-a4de-ebbe956777d0)
+[![GitHub Issues](https://img.shields.io/github/issues/devddine/e-store-reactjs.svg)](https://github.com/devddine/e-store-reactjs/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/devddine/e-store-reactjs.svg)](https://github.com/devddine/e-store-reactjs/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
+
+</div>
 
 ---
 
-🛒 **A modern, feature-rich e-commerce management system built with React.js.**  
+<p align="center">
+🛒 A modern, feature-rich e-commerce management system built with React.js.  
 Manage products, track sales, monitor stock, and view dashboards—all from one modular and scalable platform.
+</p>
 
 ---
 
 ## 📝 Table of Contents
 
-- [E-Store React JS](#e-store-react-js)
-  - [📝 Table of Contents](#-table-of-contents)
-  - [🌟 Features](#-features)
-  - [📐 Preview](#-preview)
-  - [🎥 Live Demo](#-live-demo)
-  - [💭 How it Works](#-how-it-works)
-  - [🏁 Getting Started](#-getting-started)
-  - [📁 Folder Structure](#-folder-structure)
-  - [⛏️ Built Using](#️-built-using)
-  - [🤝 Contributions](#-contributions)
-  - [📜 License](#-license)
+- [📝 Table of Contents](#-table-of-contents)
+- [🌟 Features](#-features)
+- [📐 Preview](#-preview)
+- [💭 How it Works](#-how-it-works)
+- [🏁 Getting Started](#-getting-started)
+- [📁 Folder Structure](#-folder-structure)
+- [⛏️ Built Using](#️-built-using)
+- [🤝 Contributions](#-contributions)
+- [📜 License](#-license)
 
 ---
 
@@ -42,14 +46,7 @@ Manage products, track sales, monitor stock, and view dashboards—all from one 
 
 ## 📐 Preview
 
-![Preview](./assets/preview.jpg)
-
----
-
-## 🎥 Live Demo
-
-[Launch Demo](https://your-demo-url.com)  
-*Note: For best experience, clone and run locally.*
+![Preview](./src/assets/images/preview.png)
 
 ---
 
@@ -98,33 +95,116 @@ Manage products, track sales, monitor stock, and view dashboards—all from one 
 
 ```yaml
 .
-├── public/
-│   └── locales/
-│       ├── en/translation.json
-│       └── fr/translation.json
-├── src/
-│   ├── api/
-│   ├── assets/
-│   │   ├── images/
-│   │   └── styles/
-│   ├── features/
-│   │   ├── dashboard/
-│   │   ├── products/
-│   │   ├── sales/
-│   │   └── stock/
-│   ├── layouts/
-│   ├── pages/
-│   ├── routes/
-│   ├── shared/
-│   ├── App.jsx
-│   ├── i18n.js
-│   └── main.jsx
-├── .gitignore
-├── eslint.config.js
-├── index.html
-├── package.json
-├── package-lock.json
-└── vite.config.js
+├── .gitignore                      
+├── eslint.config.js                
+├── index.html                     
+├── package-lock.json              
+├── package.json                   
+├── README.md                     # Project documentation
+├── vite.config.js                
+├── public                        # Public static assets
+│   └── locales                  # Localization files
+│       ├── en                   # English translations
+│       │   └── translation.json 
+│       └── fr                   # French translations
+│           └── translation.json 
+└── src                          # Source code
+    ├── App.jsx                  # Main React app component
+    ├── main.jsx                 # Entry point for React app
+    ├── api                      # API client and endpoints
+    │   ├── Client.js            
+    │   ├── Endpoints.js        
+    │   └── test.js              
+    ├── assets                   # Static assets like images and styles
+    │   ├── images               # Image files
+    │   └── styles               # CSS styles
+    │       ├── App.module.css   
+    │       └── index.css        
+    ├── config                   # Configuration files
+    │   └── i18n.js              # Internationalization setup
+    ├── features                 # Feature modules
+    │   ├── dashboard            # Dashboard feature
+    │   │   ├── index.jsx        # Dashboard main component
+    │   │   ├── components       # Dashboard UI components
+    │   │   │   ├── Activity.jsx 
+    │   │   │   ├── CardStats.jsx 
+    │   │   │   └── charts       # Chart components
+    │   │   │       ├── AreaChart.jsx
+    │   │   │       ├── BarChart.jsx  
+    │   │   │       └── PieChart.jsx  
+    │   │   └── hooks            # Dashboard hooks
+    │   │       ├── useGetData.js       
+    │   │       ├── useProductsStats.js
+    │   │       ├── useRecentActivities.js
+    │   │       └── useStockSalesData.js
+    │   ├── products             # Products feature
+    │   │   ├── index.jsx        # Products main component
+    │   │   ├── components       # Products UI components
+    │   │   │   └── ProductTable.jsx
+    │   │   ├── hooks            # Products hooks
+    │   │   │   ├── useAddProduct.js   
+    │   │   │   ├── useDeleteProduct.js 
+    │   │   │   ├── useEditProduct.js   
+    │   │   │   ├── useProductModal.js 
+    │   │   │   └── useProducts.js      
+    │   │   └── services         # Products services
+    │   │       └── productService.js
+    │   ├── sales                # Sales feature
+    │   │   ├── index.jsx        # Sales main component
+    │   │   ├── components       # Sales UI components
+    │   │   │   └── SaleTable.jsx
+    │   │   ├── hooks            # Sales hooks
+    │   │   │   ├── useAddSale.js    
+    │   │   │   ├── useDeleteSale.js 
+    │   │   │   ├── useEditSale.js  
+    │   │   │   ├── useSale.js     
+    │   │   │   └── useSaleModal.js
+    │   │   └── services         # Sales services
+    │   │       └── saleService.js 
+    │   ├── stock                # Stock feature
+    │   │   ├── index.jsx        # Stock main component
+    │   │   ├── components       # Stock UI components
+    │   │   │   └── StockTable.jsx 
+    │   │   ├── hooks            # Stock hooks
+    │   │   │   ├── useAddStock.js     
+    │   │   │   ├── useDeleteStock.js
+    │   │   │   ├── useEditStock.js   
+    │   │   │   ├── useStock.js         
+    │   │   │   └── useStockModal.js  
+    │   │   └── services         # Stock services
+    │   │       └── stockService.js 
+    ├── layouts                 # Layout components
+    │   └── MainLayout.jsx    
+    ├── pages                   # Page components
+    │   └── ErrorPage.jsx   
+    ├── routes                  # Route definitions
+    │   └── index.jsx         
+    └── shared                  # Shared components and utilities
+        ├── components         # Shared UI components
+        │   ├── common         # Common reusable components
+        │   │   ├── Divider.jsx     
+        │   │   ├── EntityModal.jsx  
+        │   │   ├── ListTable.jsx   
+        │   │   ├── Loading.jsx     
+        │   │   ├── SelectOptions.jsx
+        │   │   └── TableDefault.jsx 
+        │   ├── Header          # Header components
+        │   │   └── Header.jsx  
+        │   ├── SideBar         # Sidebar components
+        │   │   └── SideBar.jsx 
+        │   └── Toolbar         # Toolbar components
+        │       └── Toolbar.jsx 
+        ├── hooks              # Shared hooks
+        │   ├── useModalState.js       
+        │   ├── useSearch.js            
+        │   └── modalStates             # Modal state hooks
+        │       ├── useArticleList.js      
+        │       ├── useOperationModalState.js
+        │       └── useProductModalState.js  
+        └── utils              # Utility functions
+            ├── dateUtils.js   
+            └── validators.js 
+
 ```
 
 ---
