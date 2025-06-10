@@ -1,27 +1,16 @@
-import { useEffect, useState } from "react";
-import { fetchProducts } from "../../../features/products/services/productService";
 import { Form } from "react-bootstrap";
+import useProducts from "../../../features/products/hooks/useProducts";
+import { useTranslation } from "react-i18next";
 
 const SelectOptions = ({ value, onChange, isInvalid }) => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetchProducts();
-        setProducts(res.data);
-      } catch (err) {
-        console.error("Failed to fetch products:", err);
-      }
-    };
-    fetchData();
-  }, []);
+  const { products } = useProducts();
+  const { t } = useTranslation();
 
   return (
     <>
       <Form.Select value={value} onChange={onChange} isInvalid={isInvalid}>
         <option value="" disabled>
-          Choisir un Produit
+        {t("common.selectProducts")}
         </option>
         {products.map((p) => (
           <option key={p._id} value={p._id}>

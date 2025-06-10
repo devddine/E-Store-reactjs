@@ -1,0 +1,187 @@
+{
+  "header": {
+    "appName": "E-STORE"
+  },
+  "sidebar": {
+    "dashboard": "Tableau de Bord",
+    "products": "Gestion Produits",
+    "stockOperations": "Opérations Stock",
+    "salesOperations": "Opérations Ventes",
+    "english": "Anglais",
+    "french": "Français"
+  },
+  "toolbar": {
+    "searchPlaceholder": {
+      "product": "Chercher un Produit",
+      "stock": "Chercher un Fournisseur",
+      "sale": "Chercher un Client"
+    },
+    "newButton": {
+      "product": "Nouveau Produit",
+      "operation": "Nouvelle Opération"
+    }
+  },
+  "common": {
+    "modal": {
+      "title": {
+        "product": {
+          "view": "Détails Produit",
+          "add": "Nouveau Produit",
+          "edit": "Editer Produit",
+          "delete": "Supprimer Produit",
+          "null": ""
+        },
+        "stock": {
+          "view": "Détails Opération Stock",
+          "add": "Nouvelle Opération Stock",
+          "edit": "Editer Opération Stock",
+          "delete": "Supprimer Opération Stock",
+          "null": ""
+        },
+        "sale": {
+          "view": "Détails Opération Vente",
+          "add": "Nouvelle Opération Vente",
+          "edit": "Editer Opération Vente",
+          "delete": "Supprimer Opération Vente",
+          "null": ""
+        }
+      },
+      "buttons": {
+        "cancel": "Annuler",
+        "save": "Enregistrer",
+        "modify": "Modifier",
+        "delete": "Supprimer"
+      },
+      "body": {
+        "title": "Titre",
+        "productTitlePlaceholder": "Saisir le Titre du Produit",
+        "name": {
+          "stock": "Nom Fournisseur",
+          "sale": "Nom Client"
+        },
+        "namePlaceholder": {
+          "stock": "Saisir le nom du fournisseur",
+          "sale": "Saisir le nom du Client"
+        },
+        "date": "Date Livraison",
+        "productList": "Produits",
+        "quantityPlaceholder": "Saisir la Quantité",
+        "deleteConfirm": {
+          "product": "Êtes-vous sûr de vouloir supprimer le produit",
+          "stock": {
+            "1": "Vous êtes entrain de supprimer operation de stock de",
+            "2": "le",
+            "3": "La suppression de cette opération va impacter la quantité du stock des produits qui y sont inclus.",
+            "4": "Etes vous sûre de vouloir supprimer cette opération???"
+          },
+          "sale": {
+            "1": "Vous êtes entrain de supprimer operation de vente de",
+            "2": "le",
+            "3": "La suppression de cette opération va impacter la quantité du stock des produits qui y sont inclus.",
+            "4": "Etes vous sûre de vouloir supprimer cette opération???"
+          }
+        }
+      }
+    },
+    "selectProducts": "Choisir un Produit",
+    "errorTitle": "Le titre est requis",
+    "errorName": "Le nom est requis",
+    "errorDate": "La date est requise",
+    "errorArticles": "Les produits sont requis",
+    "errorProduct": "Le produit est requis",
+    "errorQuantity": "La quantité est requise"
+  },
+  "pages": {
+    "error404": {
+      "title": "404",
+      "message": "Oups ! Page introuvable",
+      "description": "La page que vous recherchez n'existe pas ou a été déplacée.",
+      "goDashboard": "Accéder au tableau de bord"
+    }
+  },
+  "dashboard": {
+    "title": "Tableau de Bord",
+    "stats": {
+      "products": "Produits",
+      "stockOperations": "Opérations Stock",
+      "salesOperations": "Opérations Ventes"
+    },
+    "charts": {
+      "area": {
+        "title": "Stock Quantité vs Ventes Quantité",
+        "series1": "Stock",
+        "series2": "Ventes"
+      },
+      "pie": {
+        "title": "Statistiques sur les produits",
+        "series1": "Tout Produits",
+        "series2": "Produits Vendus",
+        "series3": "Produits en Stock"
+      },
+      "bar": {
+        "title": "Total des articles",
+        "series1": "Stock",
+        "series2": "Ventes"
+      },
+      "weekdays": ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"]
+    },
+    "activity": {
+      "newStockAdded": "Nouvel ajout de stock!",
+      "newSaleRecorded": "Nouvelle vente enregistrée!",
+      "added": "a ajouté",
+      "bought": "vient d'acheter",
+      "inStock": "en stock."
+    }
+  },
+  "products": {
+    "title": "Produits",
+    "table": {
+      "column1": "Titre",
+      "column2": "Qté en Stock",
+      "column3": "Qté Vendue",
+      "unit": "unités"
+    }
+  },
+  "stock": {
+    "title": "Opérations Stock",
+    "table": {
+      "column1": "Fournisseur",
+      "column2": "Date",
+      "column3": "Nombre Produits",
+      "unit": "produits"
+    }
+  },
+  "sales": {
+    "title": "Opérations Ventes",
+    "table": {
+      "column1": "Client",
+      "column2": "Date",
+      "column3": "Nombre Produits",
+      "unit": "produits"
+    }
+  },
+  "intervals": {
+    "year": {
+      "single": "an",
+      "plural": "ans"
+    },
+    "month": {
+      "single": "mois",
+      "plural": "mois"
+    },
+    "week": {
+      "single": "semaine",
+      "plural": "semaines"
+    },
+    "day": {
+      "single": "jour",
+      "plural": "jours"
+    },
+    "hour": {
+      "single": "heure",
+      "plural": "heures"
+    },
+    "now": "à l'instant",
+    "timeAgo": "il y a "
+  }
+}

@@ -1,9 +1,11 @@
 import ReactECharts from "echarts-for-react";
+import { useTranslation } from "react-i18next";
 
-const AreaChart = ({ stockData, salesData, weekdays }) => {
+const AreaChart = ({ stockData, salesData }) => {
+  const { t } = useTranslation();
   const option = {
     title: {
-      text: "Stock Quantité vs Ventes Quantité",
+      text: t("dashboard.charts.area.title"),
       left: "center",
       top: 20,
       textStyle: {
@@ -28,14 +30,14 @@ const AreaChart = ({ stockData, salesData, weekdays }) => {
     xAxis: {
       type: "category",
       boundaryGap: false,
-      data: weekdays,
+      data: t("dashboard.charts.weekdays", { returnObjects: true }),
     },
     yAxis: {
       type: "value",
     },
     series: [
       {
-        name: "Stock",
+        name: t("dashboard.charts.area.series1"),
         type: "line",
         smooth: true,
         areaStyle: {},
@@ -46,7 +48,7 @@ const AreaChart = ({ stockData, salesData, weekdays }) => {
         animationDelay: () => Math.random() * 2000,
       },
       {
-        name: "Ventes",
+        name: t("dashboard.charts.area.series2"),
         type: "line",
         smooth: true,
         areaStyle: {},

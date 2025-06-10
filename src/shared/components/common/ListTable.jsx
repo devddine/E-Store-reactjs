@@ -1,6 +1,6 @@
-import { Button, Table } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 import { MdPlaylistRemove } from "react-icons/md";
-import { RxCross1, RxCross2 } from "react-icons/rx";
+import styles from "../../../assets/styles/App.module.css";
 
 const ListTable = ({ articles, isView, onRemove }) => {
   return (
@@ -12,9 +12,7 @@ const ListTable = ({ articles, isView, onRemove }) => {
             <td className="">{article.quantity}</td>
             {!isView && (
               <td className="text-end">
-                <Button variant="link" size="sm" onClick={() => onRemove(article)} className="p-0">
-                  <MdPlaylistRemove />
-                </Button>
+                <MdPlaylistRemove className={`${styles.pointer} p-0`} onClick={() => onRemove(article)} />
               </td>
             )}
           </tr>

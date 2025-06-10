@@ -1,17 +1,19 @@
 import { useLocation } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
+import { useTranslation } from "react-i18next";
 
 const SideBar = () => {
   const location = useLocation();
+  const { t } = useTranslation();
   const links = [
-    { name: "Tableau de Bord", url: "/" },
-    { name: "Gestion Produits", url: "/products" },
-    { name: "Opérations Stock", url: "/stock" },
-    { name: "Opérations Ventes", url: "/sales" },
+    { name: t("sidebar.dashboard"), url: "/" },
+    { name: t("sidebar.products"), url: "/products" },
+    { name: t("sidebar.stockOperations"), url: "/stock" },
+    { name: t("sidebar.salesOperations"), url: "/sales" },
   ];
 
   return (
-    <aside className="bg-light px-3 py-3">
+    <aside className="bg-light px-3 py-3 d-flex flex-column justify">
       <Nav activeKey={location.pathname} className="flex-column fw-semibold text-nowrap">
         {links.map((link, i) => (
           <Nav.Item key={i} className="py-1">

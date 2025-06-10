@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import Toolbar from "../../shared/components/Toolbar/Toolbar";
 import ProductTable from "./components/ProductTable";
 import Loading from "../../shared/components/common/Loading";
@@ -8,8 +9,10 @@ import useEditProduct from "./hooks/useEditProduct";
 import useDeleteProduct from "./hooks/useDeleteProduct";
 import useProductModal from "./hooks/useProductModal";
 import EntityModal from "../../shared/components/common/EntityModal";
+import useSearch from "../../shared/hooks/useSearch";
 
 const ProductsPage = () => {
+  const { t } = useTranslation();
   const { products, loading, refreshProducts } = useProducts();
   const { handleAddProduct, adding } = useAddProduct(refreshProducts);
   const { handleEditProduct, updating } = useEditProduct(refreshProducts);
@@ -17,16 +20,17 @@ const ProductsPage = () => {
   const { modalMode, currentProduct, openModal, closeModal } = useProductModal();
   const isLoading = loading || adding || updating || deleting;
 
+  const { filteredData, searchValue, setSearchValue } = useSearch("product", products);
   return (
     <>
       {isLoading && <Loading />}
 
-      <h2 className="fw-bolder">Produits</h2>
+      <h2 className="fw-bolder">{t("products.title")}</h2>
 
-      <Toolbar onAdd={() => openModal("add")} />
+      <Toolbar type="product" searchValue={searchValue} onSearch={setSearchValue} onAdd={() => openModal("add")} />
 
       <ProductTable
-        productsList={products}
+        productsList={filteredData.length || searchValue ? filteredData : products}
         onView={(product) => openModal("view", product)}
         onEdit={(product) => openModal("edit", product)}
         onDelete={(product) => openModal("delete", product)}

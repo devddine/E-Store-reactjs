@@ -1,35 +1,14 @@
-import { useEffect, useState } from "react";
-import { fetchProducts } from "../../products/services/productService";
-import { fetchSales } from "../../sales/services/saleService";
-import { fetchStocks } from "../../stock/services/stockService";
+import useSale from "../../sales/hooks/useSale";
+import useProducts from "../../products/hooks/useProducts";
+import useStock from "../../stock/hooks/useStock";
 
 const useGetData = () => {
-  const [productsData, setProductsData] = useState([]);
-  const [stockData, setStockData] = useState([]);
-  const [salesData, setSalesData] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const productsData = useProducts();
+  const stockData = useStock();
+  const salesData = useSale();
+  const loading = productsData.loading || stockData.loading || salesData.loading;
 
-  useEffect(() => {
-    const refreshSales = async () => {
-      setLoading(true);
-      try {
-        const resProducts = await fetchProducts();
-        const resStock = await fetchStocks();
-        const resSales = await fetchSales();
-
-        setProductsData(resProducts.data);
-        setStockData(resStock.data);
-        setSalesData(resSales.data);
-      } catch (err) {
-        console.error("Failed to fetch data:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    refreshSales();
-  }, []);
-
-  return { productsData, stockData, salesData, loading };
+  return { productsData: productsData.products, stockData: stockData.stock, salesData: salesData.sales, loading };
 };
 
 export default useGetData;

@@ -7,8 +7,11 @@ import useStockModal from "./hooks/useStockModal";
 import EntityModal from "../../shared/components/common/EntityModal";
 import Loading from "../../shared/components/common/Loading";
 import Toolbar from "../../shared/components/Toolbar/Toolbar";
+import useSearch from "../../shared/hooks/useSearch";
+import { useTranslation } from "react-i18next";
 
 const StockPage = () => {
+  const { t } = useTranslation();
   const { stock, loading, refreshStock } = useStock();
   const { handleAddStock, adding } = useAddStock(refreshStock);
   const { handleEditStock, updating } = useEditStock(refreshStock);
@@ -16,23 +19,24 @@ const StockPage = () => {
   const { modalMode, currentStock, openModal, closeModal } = useStockModal();
   const isLoading = loading || adding || updating || deleting;
 
+  const { filteredData, searchValue, setSearchValue } = useSearch("operation", stock);
   return (
     <>
       {isLoading && <Loading />}
 
-      <h2 className="fw-bolder">Opérations Stock</h2>
+      <h2 className="fw-bolder">{t("stock.title")}</h2>
 
-      <Toolbar onAdd={() => openModal("add")} />
+      <Toolbar type="stock" searchValue={searchValue} onSearch={setSearchValue} onAdd={() => openModal("add")} />
 
       <StockTable
-        stockList={stock}
+        stockList={filteredData.length || searchValue ? filteredData : stock}
         onView={(stock) => openModal("view", stock)}
         onEdit={(stock) => openModal("edit", stock)}
         onDelete={(stock) => openModal("delete", stock)}
       />
 
       <EntityModal
-        type="operation"
+        type="stock"
         show={!!modalMode}
         onHide={closeModal}
         mode={modalMode}

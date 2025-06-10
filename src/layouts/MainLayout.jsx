@@ -2,10 +2,11 @@ import { Outlet } from "react-router-dom";
 import Header from "../shared/components/Header/Header";
 import SideBar from "../shared/components/SideBar/SideBar";
 import { IconContext } from "react-icons";
+import styles from "./../assets/styles/App.module.css";
 
 const MainLayout = () => {
   return (
-    <div className="d-flex flex-column" style={{ height: "100vh" }}>
+    <div className={`${styles.layout} d-flex flex-column`}>
       <Header />
 
       <div className="d-flex flex-grow-1">

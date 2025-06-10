@@ -1,0 +1,187 @@
+{
+  "header": {
+    "appName": "E-STORE"
+  },
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "products": "Product Management",
+    "stockOperations": "Stock Operations",
+    "salesOperations": "Sales Operations",
+    "english": "English",
+    "french": "French"
+  },
+  "toolbar": {
+    "searchPlaceholder": {
+      "product": "Search for a Product",
+      "stock": "Search for a Supplier",
+      "sale": "Search for a Customer"
+    },
+    "newButton": {
+      "product": "New Product",
+      "operation": "New Operation"
+    }
+  },
+  "common": {
+    "modal": {
+      "title": {
+        "product": {
+          "view": "Product Details",
+          "add": "New Product",
+          "edit": "Edit Product",
+          "delete": "Delete Product",
+          "null": ""
+        },
+        "stock": {
+          "view": "Stock Operation Details",
+          "add": "New Stock Operation",
+          "edit": "Edit Stock Operation",
+          "delete": "Delete Stock Operation",
+          "null": ""
+        },
+        "sale": {
+          "view": "Sales Operation Details",
+          "add": "New Sales Operation",
+          "edit": "Edit Sales Operation",
+          "delete": "Delete Sales Operation",
+          "null": ""
+        }
+      },
+      "buttons": {
+        "cancel": "Cancel",
+        "save": "Save",
+        "modify": "Modify",
+        "delete": "Delete"
+      },
+      "body": {
+        "title": "Title",
+        "productTitlePlaceholder": "Enter Product Title",
+        "name": {
+          "stock": "Supplier Name",
+          "sale": "Customer Name"
+        },
+        "namePlaceholder": {
+          "stock": "Enter supplier name",
+          "sale": "Enter customer name"
+        },
+        "date": "Delivery Date",
+        "productList": "Products",
+        "quantityPlaceholder": "Enter Quantity",
+        "deleteConfirm": {
+          "product": "Are you sure you want to delete the product",
+          "stock": {
+            "1": "You are about to delete stock operation of",
+            "2": "on",
+            "3": "Deleting this operation will affect the stock quantity of the included products.",
+            "4": "Are you sure you want to delete this operation?"
+          },
+          "sale": {
+            "1": "You are about to delete sales operation of",
+            "2": "on",
+            "3": "Deleting this operation will affect the stock quantity of the included products.",
+            "4": "Are you sure you want to delete this operation?"
+          }
+        }
+      }
+    },
+    "selectProducts": "Select a Product",
+    "errorTitle": "Title is required",
+    "errorName": "Name is required",
+    "errorDate": "Date is required",
+    "errorArticles": "Products are required",
+    "errorProduct": "Product is required",
+    "errorQuantity": "Quantity is required"
+  },
+  "pages": {
+    "error404": {
+      "title": "404",
+      "message": "Oops! Page not found",
+      "description": "The page you are looking for does not exist or has been moved.",
+      "goDashboard": "Go to Dashboard"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "stats": {
+      "products": "Products",
+      "stockOperations": "Stock Operations",
+      "salesOperations": "Sales Operations"
+    },
+    "charts": {
+      "area": {
+        "title": "Stock Quantity vs Sales Quantity",
+        "series1": "Stock",
+        "series2": "Sales"
+      },
+      "pie": {
+        "title": "Product Statistics",
+        "series1": "All Products",
+        "series2": "Sold Products",
+        "series3": "Products in Stock"
+      },
+      "bar": {
+        "title": "Total Items",
+        "series1": "Stock",
+        "series2": "Sales"
+      },
+      "weekdays": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    },
+    "activity": {
+      "newStockAdded": "New stock added!",
+      "newSaleRecorded": "New sale recorded!",
+      "added": "added",
+      "bought": "just bought",
+      "inStock": "in stock."
+    }
+  },
+  "products": {
+    "title": "Products",
+    "table": {
+      "column1": "Title",
+      "column2": "Qty in Stock",
+      "column3": "Qty Sold",
+      "unit": "units"
+    }
+  },
+  "stock": {
+    "title": "Stock Operations",
+    "table": {
+      "column1": "Supplier",
+      "column2": "Date",
+      "column3": "Number of Products",
+      "unit": "products"
+    }
+  },
+  "sales": {
+    "title": "Sales Operations",
+    "table": {
+      "column1": "Customer",
+      "column2": "Date",
+      "column3": "Number of Products",
+      "unit": "products"
+    }
+  },
+  "intervals": {
+    "year": {
+      "single": "year",
+      "plural": "years"
+    },
+    "month": {
+      "single": "month",
+      "plural": "months"
+    },
+    "week": {
+      "single": "week",
+      "plural": "weeks"
+    },
+    "day": {
+      "single": "day",
+      "plural": "days"
+    },
+    "hour": {
+      "single": "hour",
+      "plural": "hours"
+    },
+    "now": "just now",
+    "timeAgo": "ago "
+  }
+}

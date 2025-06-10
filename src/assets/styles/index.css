@@ -8,9 +8,57 @@
 
 /* Root variables for colors and transitions */
 :root {
-  --primary-color: #7749F8; 
-  --primary-color-hover: #6032dd; 
-  --text-color: #707070; 
-  --text-color-2: #fff; 
-  --tran: all 1s ease; 
+  --primary-color: #7749f8;
+  --primary-color-hover: #6032dd;
+  --text-color: #707070;
+  --text-color-2: #fff;
+  --tran: all 1s ease;
+}
+
+html,
+body {
+  transition: all var(--tran);
+  height: 100%;
+}
+
+::selection {
+  background-color: var(--primary-color);
+  color: var(--text-color-2);
+}
+
+/* Global styles */
+/* Navigation styles */
+.nav-link {
+  color: var(--text-color) !important;
+}
+
+.nav-link.active {
+  color: var(--primary-color) !important;
+}
+
+.nav-link:hover {
+  color: var(--primary-color-hover) !important;
+}
+
+/* Focus styles for form controls */
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 5px var(--primary-color) !important;
+}
+
+/* Modal content border */
+.modal-content {
+  border: 2px solid var(--primary-color) !important;
+}
+
+/* Main color */
+.mainColor {
+  color: var(--primary-color);
+}
+
+/* Cards stats style */
+.col .card {
+  border-color: var(--primary-color);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 }

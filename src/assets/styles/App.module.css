@@ -1,0 +1,48 @@
+.searchBar {
+  width: 500px;
+}
+
+/* Main button styles */
+.buttonPrimary {
+  background-color: var(--primary-color) !important;
+  color: var(--text-color-2) !important;
+  border: 0px solid var(--primary-color) !important;
+}
+
+.buttonPrimary:hover {
+  background-color: var(--primary-color-hover) !important;
+}
+
+/* Cursor styles for interactive elements */
+.pointer {
+  cursor: pointer;
+}
+
+.loading {
+  background-color: #000000bf;
+  z-index: 2;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, var(--primary-color), transparent);
+}
+
+.errorpage {
+  background-color: #ffffff;
+  z-index: 3;
+}
+
+.layout {
+  height: 100vh;
+}
+
+.submitButton {
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); 
+}
+
+.icons {
+  height: 50px; 
+  width: 50px; 
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); 
+}

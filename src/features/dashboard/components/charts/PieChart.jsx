@@ -1,10 +1,12 @@
 
 import ReactECharts from "echarts-for-react";
+import { useTranslation } from "react-i18next";
 
 const PieChart = ({ stats }) => {
+  const { t } = useTranslation();
   const option = {
     title: {
-      text: "Statistiques sur les produits",
+      text: t("dashboard.charts.pie.title"),
       left: "center",
       top: 10,
       textStyle: {
@@ -13,14 +15,14 @@ const PieChart = ({ stats }) => {
     },
     series: [
       {
-        name: "Statistiques",
+        name: "stats",
         type: "pie",
         radius: "50%",
         center: ["50%", "50%"],
         data: [
-          { value: Math.sqrt(stats.totalProducts), name: "Tout Produits" },
-          { value: Math.sqrt(stats.totalSales), name: "Produits Vendus" },
-          { value: Math.sqrt(stats.totalStock), name: "Produits en Stock" },
+          { value: Math.sqrt(stats.totalProducts), name: t("dashboard.charts.pie.series1") },
+          { value: Math.sqrt(stats.totalSales), name: t("dashboard.charts.pie.series2") },
+          { value: Math.sqrt(stats.totalStock), name: t("dashboard.charts.pie.series3") },
         ].sort((a, b) => a.value - b.value),
         roseType: "area",
         label: {

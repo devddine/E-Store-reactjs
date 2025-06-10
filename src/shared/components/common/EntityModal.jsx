@@ -3,21 +3,8 @@ import ListTable from "./ListTable";
 import SelectOptions from "./SelectOptions";
 import useModalState from "../../hooks/useModalState";
 import { FaCirclePlus } from "react-icons/fa6";
-
-const TITLES = {
-  product: {
-    view: "Détails Produit",
-    add: "Nouveau Produit",
-    edit: "Editer Produit",
-    delete: "Supprimer Produit",
-  },
-  operation: {
-    view: "Détails Opération",
-    add: "Nouvelle Opération",
-    edit: "Editer Opération",
-    delete: "Supprimer Opération",
-  },
-};
+import styles from "../../../assets/styles/App.module.css";
+import { useTranslation } from "react-i18next";
 
 const EntityModal = ({
   type, // 'product' or 'operation'
@@ -29,6 +16,7 @@ const EntityModal = ({
   onEdit,
   onDelete,
 }) => {
+  const { t } = useTranslation();
   const {
     isProduct,
     isAdd,
@@ -56,7 +44,7 @@ const EntityModal = ({
     <Modal show={show} onHide={onHide} backdrop="static" centered size={isProduct ? "md" : "lg"}>
       <Modal.Header className="border-0 pb-0">
         <Modal.Title>
-          <h6 className="mb-0">{TITLES[type][mode]}</h6>
+          <h6 className="mb-0">{t(`common.modal.title.${type}.${mode}`)}</h6>
         </Modal.Title>
       </Modal.Header>
       {(isAdd || isEdit) && (
@@ -66,7 +54,7 @@ const EntityModal = ({
               <Form.Group>
                 <Form.Control
                   type="text"
-                  placeholder="Saisir le Titre du Produit"
+                  placeholder={t("common.modal.body.productTitlePlaceholder")}
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   isInvalid={!!titleError}
@@ -77,10 +65,10 @@ const EntityModal = ({
               <>
                 <Row className="mb-3">
                   <Form.Group as={Col} controlId="name">
-                    <Form.Label>le nom</Form.Label>
+                    <Form.Label>{t(`common.modal.body.name.${type}`)}</Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder="Saisir le nom"
+                      placeholder={t(`common.modal.body.namePlaceholder.${type}`)}
                       value={operation.name}
                       onChange={(e) => setOperation({ ...operation, name: e.target.value })}
                       isInvalid={!!nameError}
@@ -88,7 +76,7 @@ const EntityModal = ({
                     <Form.Control.Feedback type="invalid">{nameError}</Form.Control.Feedback>
                   </Form.Group>
                   <Form.Group as={Col} controlId="date">
-                    <Form.Label>Date</Form.Label>
+                    <Form.Label>{t("common.modal.body.date")}</Form.Label>
                     <Form.Control
                       type="date"
                       value={operation.date}
@@ -100,7 +88,8 @@ const EntityModal = ({
                 </Row>
                 <hr />
                 <h6 className="mt-4 fw-bold">
-                  Produits: <span className="text-danger font-monospace fst-italic h6">{articlesError}</span>{" "}
+                  {t("common.modal.body.productList")}:{" "}
+                  <span className="text-danger font-monospace fst-italic h6">{articlesError}</span>{" "}
                 </h6>
                 <ListTable articles={operation.articles} isView={isView} onRemove={handleListRemove} />
                 <Row>
@@ -121,7 +110,7 @@ const EntityModal = ({
                   <Form.Group as={Col} sm={5} className="pe-0">
                     <Form.Control
                       type="number"
-                      placeholder="Saisir la Quantité"
+                      placeholder={t("common.modal.body.quantityPlaceholder")}
                       min="0"
                       value={productList.quantity}
                       onChange={(e) => setProductList({ ...productList, quantity: e.target.value })}
@@ -130,8 +119,8 @@ const EntityModal = ({
                     <Form.Control.Feedback type="invalid">{quantityError}</Form.Control.Feedback>
                   </Form.Group>
                   <Form.Group as={Col} sm={1} className="px-0">
-                    <div className="d-flex justify-content-center align-content-center">
-                      <FaCirclePlus style={{ height: "38px" }} onClick={handleListAdd} />
+                    <div className="d-flex justify-content-center py-2">
+                      <FaCirclePlus className={styles.pointer} onClick={handleListAdd} />
                     </div>
                   </Form.Group>
                 </Row>
@@ -140,10 +129,10 @@ const EntityModal = ({
           </Modal.Body>
           <Modal.Footer className="border-0 pt-0">
             <Button variant="secondary" onClick={onHide} size="sm">
-              Annuler
+              {t("common.modal.buttons.cancel")}
             </Button>
-            <Button variant="primary" type="submit" size="sm">
-              {isAdd ? "Enregistrer" : "Enregistrer"}
+            <Button variant="primary" type="submit" size="sm" className={styles.buttonPrimary}>
+              {isAdd ? t("common.modal.buttons.save") : t("common.modal.buttons.modify")}
             </Button>
           </Modal.Footer>
         </Form>
@@ -153,20 +142,30 @@ const EntityModal = ({
           <Modal.Body>
             <p className="mb-0">
               {isProduct
-                ? `Êtes-vous sûr de vouloir supprimer le produit `
-                : `Vous êtes entrain de supprimer l'opération de `}
+                ? t("common.modal.body.deleteConfirm.product") + " "
+                : t(`common.modal.body.deleteConfirm.${type}.1`) + " "}
               <span className="text-danger fw-medium">{isProduct ? title : operation.name}</span>
-              {isProduct
-                ? " ?"
-                : ` le ${operation.date} !\nLa suppression de cette opération va impacter la quantité du stock des produits qui y sont inclus.\nEtes vous sûre de vouloir supprimer cette opération?`}
+              {isProduct ? (
+                " ?"
+              ) : (
+                <>
+                  {" " + t(`common.modal.body.deleteConfirm.${type}.2`) + " "}
+                  <span className="text-danger fw-medium">{operation.date}</span>!<br />
+                  <br />
+                  {t(`common.modal.body.deleteConfirm.${type}.3`)}
+                  <br />
+                  <br />
+                  {t(`common.modal.body.deleteConfirm.${type}.4`)}
+                </>
+              )}
             </p>
           </Modal.Body>
           <Modal.Footer className="border-0 pt-0">
             <Button variant="secondary" onClick={onHide} size="sm">
-              Annuler
+              {t("common.modal.buttons.cancel")}
             </Button>
             <Button variant="danger" onClick={handleSubmit} size="sm">
-              Delete
+              {t("common.modal.buttons.delete")}
             </Button>
           </Modal.Footer>
         </>
@@ -182,23 +181,23 @@ const EntityModal = ({
               <>
                 <Row className="mb-3">
                   <Form.Group as={Col} controlId="name">
-                    <Form.Label>le nom</Form.Label>
+                    <Form.Label>{t(`common.modal.body.name.${type}`)}</Form.Label>
                     <Form.Control type="text" value={operation.name} disabled />
                   </Form.Group>
                   <Form.Group as={Col} controlId="date">
-                    <Form.Label>Date</Form.Label>
+                    <Form.Label>{t("common.modal.body.date")}</Form.Label>
                     <Form.Control type="date" value={operation.date} disabled />
                   </Form.Group>
                 </Row>
                 <hr />
-                <h6 className="mt-4 fw-bold">Produits</h6>
+                <h6 className="mt-4 fw-bold">{t("common.modal.body.productList")}</h6>
                 <ListTable articles={operation.articles} isView={isView} />
               </>
             )}
           </Modal.Body>
           <Modal.Footer className="border-0 pt-0">
             <Button variant="secondary" onClick={onHide} size="sm">
-              Annuler
+              {t("common.modal.buttons.cancel")}
             </Button>
           </Modal.Footer>
         </>

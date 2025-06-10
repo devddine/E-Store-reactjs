@@ -1,10 +1,12 @@
 
 import ReactECharts from "echarts-for-react";
+import { useTranslation } from "react-i18next";
 
-const BarChart = ({ stockData, salesData, weekdays }) => {
+const BarChart = ({ stockData, salesData }) => {
+  const { t } = useTranslation();
   const option = {
     title: {
-      text: "Total des articles",
+      text: t("dashboard.charts.bar.title"),
       left: "center",
       top: 10,
       textStyle: {
@@ -26,7 +28,7 @@ const BarChart = ({ stockData, salesData, weekdays }) => {
     xAxis: [
       {
         type: "category",
-        data: weekdays,
+        data: t("dashboard.charts.weekdays", { returnObjects: true }),
       },
     ],
     yAxis: [
@@ -37,13 +39,13 @@ const BarChart = ({ stockData, salesData, weekdays }) => {
     ],
     series: [
       {
-        name: "Stock",
+        name: t("dashboard.charts.bar.series1"),
         type: "bar",
         data: stockData,
         animationDelay: () => Math.random() * 2000,
       },
       {
-        name: "Ventes",
+        name: t("dashboard.charts.bar.series2"),
         type: "bar",
         data: salesData,
         animationDelay: () => Math.random() * 2000,
