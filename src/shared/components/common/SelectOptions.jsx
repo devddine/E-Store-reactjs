@@ -22,7 +22,7 @@ const SelectOptions = ({ value, onChange, isInvalid }) => {
     <>
       <Form.Select value={value} onChange={onChange} isInvalid={isInvalid}>
         <option value="" disabled>
-        {t("common.selectProducts")}
+          {t("common.selectProducts")}
         </option>
         {products.map((p) => (
           <option key={p._id} value={p._id}>

@@ -49,7 +49,7 @@ const TableDefault = ({ config, onView, onEdit, onDelete }) => {
             </td>
             <td className={styles.pointer} onClick={() => onView(item)}>
               {isProducts
-                ? `${item.sells} ${t(`${type}.table.unit`)}` 
+                ? `${item.sells} ${t(`${type}.table.unit`)}`
                 : `${item.articles.length}  ${t(`${type}.table.unit`)}`}
             </td>
             <td>

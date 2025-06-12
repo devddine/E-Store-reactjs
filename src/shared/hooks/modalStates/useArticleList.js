@@ -38,13 +38,13 @@ const useArticleList = (show, operation, setOperation, setArticlesError) => {
       productList.product,
       Number(productList.quantity)
     );
-  
+
     if (!productValid) {
       setProductError(productMessage);
     } else {
       setProductError("");
     }
-  
+
     if (!quantityValid) {
       setQuantityError(quantityMessage);
     } else if (!stockValid) {
@@ -52,17 +52,15 @@ const useArticleList = (show, operation, setOperation, setArticlesError) => {
     } else {
       setQuantityError("");
     }
-  
+
     if (!productValid || !quantityValid || !stockValid) {
       return;
     }
-  
-    const existingArticleIndex = operation.articles.findIndex(
-      (article) => article.product === productList.product
-    );
-  
+
+    const existingArticleIndex = operation.articles.findIndex((article) => article.product === productList.product);
+
     let updatedArticles;
-  
+
     if (existingArticleIndex !== -1) {
       updatedArticles = [...operation.articles];
       const existingArticle = updatedArticles[existingArticleIndex];
@@ -73,7 +71,7 @@ const useArticleList = (show, operation, setOperation, setArticlesError) => {
     } else {
       updatedArticles = [...operation.articles, productList];
     }
-  
+
     setOperation({ ...operation, articles: updatedArticles });
     setProductList({ title: "", product: "", quantity: "" });
     setArticlesError("");

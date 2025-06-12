@@ -23,16 +23,7 @@ import { useTranslation } from "react-i18next";
  * @param {Function} props.onDelete - Function to call to delete an item.
  * @returns {JSX.Element} The rendered entity modal component.
  */
-const EntityModal = ({
-  type, // 'product' or 'operation'
-  show,
-  onHide,
-  mode, // 'add', 'edit', 'delete', 'view'
-  item = {},
-  onAdd,
-  onEdit,
-  onDelete,
-}) => {
+const EntityModal = ({ type, show, onHide, mode, item = {}, onAdd, onEdit, onDelete }) => {
   const { t } = useTranslation();
   const {
     isProduct,

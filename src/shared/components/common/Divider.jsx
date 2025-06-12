@@ -1,9 +1,8 @@
-
 /**
  * @fileoverview Divider component renders a styled divider line.
  */
 
-import styles from './../../../assets/styles/App.module.css';
+import styles from "./../../../assets/styles/App.module.css";
 
 /**
  * Divider component to visually separate content sections.

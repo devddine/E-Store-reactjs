@@ -1,4 +1,3 @@
-
 /**
  * @fileoverview PieChart component renders a pie chart for product, sales, and stock stats using ECharts.
  */

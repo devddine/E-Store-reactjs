@@ -1,4 +1,3 @@
-
 /**
  * @fileoverview BarChart component renders a bar chart for stock and sales data using ECharts.
  */
